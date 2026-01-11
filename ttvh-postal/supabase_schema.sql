@@ -110,7 +110,7 @@ BEGIN
     IF NOT EXISTS (
         SELECT 1 FROM pg_policies WHERE policyname = 'bcvh_own_unit' AND tablename = 'profiles'
     ) THEN
-        CREATE POLICY "bcvh_own_unit" ON profiles USING (unit_code = (auth.jwt()->>'app_metadata'->>'unit_code')::text);
+        CREATE POLICY "bcvh_own_unit" ON profiles USING (unit_code = (auth.jwt()->'app_metadata'->>'unit_code')::text);
     END IF;
 END
 $$;
